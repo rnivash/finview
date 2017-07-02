@@ -10,7 +10,7 @@ namespace finview.DataAccess.Tests
         public void TestMethod1()
         {
             TransactionSqlRepository tr = new TransactionSqlRepository();
-            var result = tr.GetData();
+            var result = tr.GetTransaction();
             Assert.IsNotNull(result);
         }
 

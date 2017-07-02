@@ -13,15 +13,22 @@ namespace finview.DataAccess
     {
         public List<Transactions> GetTransaction()
         {
-            FinViewModel fvm = new FinViewModel();
-            return fvm.Set<Transactions>().ToList();
+            List<Transactions> res;
+            using (FinViewModel fvm = new FinViewModel())
+            {
+                res = fvm.Set<Transactions>().ToList();
+            }
+            return res;
         }
 
         public void SaveTransactions(List<Transactions> listTransaction)
         {
-            FinViewModel fvm = new FinViewModel();
-            fvm.Set<Transactions>().AddRange(listTransaction);
-            fvm.SaveChanges();
+            using (FinViewModel fvm = new FinViewModel())
+            {
+                fvm.Set<Transactions>().AddRange(listTransaction);
+                fvm.SaveChanges();
+            }
+           
         }
     }
 }
