@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using finview.Entities.Model;
 using finview.DataAccess.Contracts;
+using System.Transactions;
 
 namespace finview.Business
 {
@@ -29,8 +30,20 @@ namespace finview.Business
 
         public void ImportTransaction(string fileName)
         {
-            var listTrans = _fileImportRepository.ReadTransactions(fileName);
-            _transactionRepository.SaveTransactions(listTrans);
+            using(TransactionScope tr = new TransactionScope())
+            {
+
+                var importTrack = _fileImportRepository.InitiateImport();
+
+                var listTrans = _fileImportRepository.ReadTransactions(fileName, importTrack);
+
+                _transactionRepository.SaveTransactions(listTrans);
+
+                _fileImportRepository.SaveFileUploadTrack(importTrack);
+
+                tr.Complete();
+            }
+            
         }
     }
 }

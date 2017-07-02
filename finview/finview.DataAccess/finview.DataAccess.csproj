@@ -79,6 +79,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Boot\FinviewDataAccessInit.cs" />
+    <Compile Include="Config\FileUploadTrackConfiguration.cs" />
     <Compile Include="Config\TransactionsConfiguration.cs" />
     <Compile Include="Data\FinViewModel.cs" />
     <Compile Include="FileImportRepository.cs" />

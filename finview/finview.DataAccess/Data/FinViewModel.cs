@@ -16,13 +16,13 @@ namespace finview.DataAccess.Data
 
         public virtual DbSet<Transactions> Tables { get; set; }
 
+        public virtual DbSet<FileUploadTrack> FileUploadTracks { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Transactions>()
-                .Property(e => e.posted_at)
-                .IsFixedLength();
-
             modelBuilder.Configurations.Add<Transactions>(new TransactionsConfiguration());
+
+            modelBuilder.Configurations.Add<FileUploadTrack>(new FileUploadTrackConfiguration());
         }
     }
 }

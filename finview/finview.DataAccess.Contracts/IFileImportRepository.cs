@@ -9,6 +9,10 @@ namespace finview.DataAccess.Contracts
 {
     public interface IFileImportRepository
     {
-        List<Transactions> ReadTransactions(string fileName);
+        List<Transactions> ReadTransactions(string fileName, FileUploadTrack fut);
+
+        FileUploadTrack InitiateImport();
+
+        void SaveFileUploadTrack(FileUploadTrack fut);
     }
 }
