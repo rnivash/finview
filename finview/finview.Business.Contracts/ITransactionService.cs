@@ -1,4 +1,5 @@
 ﻿using finview.Entities.Model;
+using finview.Entities.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,5 +13,9 @@ namespace finview.Business.Contracts
         List<Transactions> GetTransaction();
 
         void ImportTransaction(string fileName);
+
+        ReportModel GetReport();
+
+        ReportModel GetReport(DateTime reportDate);
     }
 }

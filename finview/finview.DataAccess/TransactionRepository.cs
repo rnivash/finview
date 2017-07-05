@@ -57,6 +57,11 @@ namespace finview.DataAccess
             throw new NotImplementedException();
         }
 
+        public List<Transactions> GetTransaction(DateTime fromDate, DateTime toDate)
+        {
+            throw new NotImplementedException();
+        }
+
         public void SaveTransactions(List<Transactions> listTransaction)
         {
             throw new NotImplementedException();

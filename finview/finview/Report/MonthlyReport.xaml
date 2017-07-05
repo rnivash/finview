@@ -5,8 +5,34 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:finview.Report"
         mc:Ignorable="d"
-        Title="MonthlyReport" Height="300" Width="300">
-    <Grid>
-        
+        Title="MonthlyReport" Height="378.947" Width="1037.594">
+    <Grid Margin="0,0,33,0" Height="340" VerticalAlignment="Top">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="113*"/>
+            <ColumnDefinition Width="391*"/>
+        </Grid.ColumnDefinitions>
+        <Label Name="lblexpense" Content="0" HorizontalAlignment="Left" Margin="57,66,0,0" VerticalAlignment="Top" Height="222" Width="438" RenderTransformOrigin="0.5,0.5" Foreground="#FFF32D2D" Background="White" FontSize="72" Grid.ColumnSpan="2">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="7.215"/>
+                    <RotateTransform/>
+                    <TranslateTransform X="6.076"/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <Label Name="lblincome" Content="0" HorizontalAlignment="Left" Margin="287,73,0,0" VerticalAlignment="Top" Height="222" Width="434" RenderTransformOrigin="0.5,0.5" Background="#FFF8FBF7" Foreground="#FF2DF019" FontSize="72" Grid.Column="1">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="7.215"/>
+                    <RotateTransform/>
+                    <TranslateTransform X="6.076"/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <DatePicker Name="dpreportdate" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" SelectedDateChanged="dpreportdate_SelectedDateChanged" />
+
+
     </Grid>
 </Window>

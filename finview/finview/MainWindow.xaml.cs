@@ -19,6 +19,8 @@ using System.Windows.Shapes;
 using System.IO;
 using Microsoft.VisualBasic.FileIO;
 using finview.Report;
+using finview.Entities.Unity;
+using Microsoft.Practices.Unity;
 
 namespace finview
 {
@@ -70,7 +72,7 @@ namespace finview
 
         private void BtnReport_Click(object sender, RoutedEventArgs e)
         {
-            MonthlyReport mw = new MonthlyReport();
+            MonthlyReport mw = new MonthlyReport(FinviewContainer.Instance.Resolve<ITransactionService>());
             mw.Show();
         }
     }

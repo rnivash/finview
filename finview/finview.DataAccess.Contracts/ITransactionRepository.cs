@@ -12,5 +12,7 @@ namespace finview.DataAccess.Contracts
         List<Transactions> GetTransaction();
 
         void SaveTransactions(List<Transactions> listTransaction);
+
+        List<Transactions> GetTransaction(DateTime fromDate, DateTime toDate);
     }
 }

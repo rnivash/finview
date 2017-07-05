@@ -1,4 +1,5 @@
-﻿using System;
+﻿using finview.Business.Contracts;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,31 @@ namespace finview.Report
     /// </summary>
     public partial class MonthlyReport : Window
     {
-        public MonthlyReport()
+        private ITransactionService _transactionService;
+
+        public MonthlyReport(ITransactionService transactionService)
         {
+            _transactionService = transactionService;
+
             InitializeComponent();
+
+            LoadTransactionGrid();
+        }
+
+        public void LoadTransactionGrid()
+        {
+
+            var result = _transactionService.GetReport();
+            lblexpense.Content = result.Expense;
+            lblincome.Content = result.Income;
+        }
+
+        private void dpreportdate_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+            var result = _transactionService.GetReport(dpreportdate.SelectedDate.GetValueOrDefault());
+            lblexpense.Content = result.Expense;
+            lblincome.Content = result.Income;
         }
     }
 }

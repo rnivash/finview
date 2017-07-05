@@ -30,5 +30,17 @@ namespace finview.DataAccess
             }
            
         }
+
+        public List<Transactions> GetTransaction(DateTime fromDate, DateTime toDate)
+        {
+            List<Transactions> res;
+            using (FinViewModel fvm = new FinViewModel())
+            {
+                res = fvm.Set<Transactions>()
+                    .Where(t => t.TransactionDate >= fromDate.Date && t.TransactionDate <= toDate.Date)
+                    .ToList();
+            }
+            return res;
+        }
     }
 }

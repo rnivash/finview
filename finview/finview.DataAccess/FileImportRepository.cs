@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.VisualBasic.FileIO;
 using finview.Entities.Model;
 using finview.DataAccess.Data;
+using System.Globalization;
 
 namespace finview.DataAccess
 {
@@ -50,7 +51,11 @@ namespace finview.DataAccess
                     string[] fields = csvParser.ReadFields();
 
                     DateTime dt;
-                    if (DateTime.TryParse(fields[0], out dt))
+                    if (DateTime.TryParseExact(fields[0],
+                        new string[] { "d/M/y", "dd/MM/y", "dd/MM/yy" },
+                       CultureInfo.InvariantCulture,
+                       DateTimeStyles.None,
+                       out dt))
                     {
                         trans.TransactionDate = dt;
                     }
