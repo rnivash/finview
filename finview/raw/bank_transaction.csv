@@ -1,0 +1,4 @@
+
+TransactionDate,Narration,TransactionValueDate,WithdrawalAmount,DepositAmount,ChequeNumer,ClosingBalance
+1/1/2016,Test narration ,1/1/2016,0,100,chk101,100
+1/2/2016,Test narration2, 1/2/2016,50,0,chk102,50
