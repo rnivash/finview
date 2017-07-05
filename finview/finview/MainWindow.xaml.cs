@@ -18,6 +18,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO;
 using Microsoft.VisualBasic.FileIO;
+using finview.Report;
 
 namespace finview
 {
@@ -66,6 +67,11 @@ namespace finview
                 }
             }
         }
-       
+
+        private void BtnReport_Click(object sender, RoutedEventArgs e)
+        {
+            MonthlyReport mw = new MonthlyReport();
+            mw.Show();
+        }
     }
 }
