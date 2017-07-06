@@ -29,7 +29,7 @@ namespace finview
     /// </summary>
     public partial class MainWindow : Window
     {
-        private ITransactionService _transactionService;
+        private readonly ITransactionService _transactionService;
 
         public MainWindow(ITransactionService transactionService)
         {
@@ -43,10 +43,10 @@ namespace finview
         public void LoadTransactionGrid()
         {
             
-            ObservableCollection<Transactions> TransactionsList = 
+            ObservableCollection<Transactions> transactionsList = 
                 new ObservableCollection<Transactions>(_transactionService.GetTransaction());
             
-            dgTransaction.DataContext = TransactionsList;
+            dgTransaction.DataContext = transactionsList;
         }
 
         private void BtnRefresh_Click(object sender, RoutedEventArgs e)
@@ -56,10 +56,12 @@ namespace finview
 
         private void BtnImport_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Multiselect = false;
-            openFileDialog.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
-            openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            OpenFileDialog openFileDialog = new OpenFileDialog
+            {
+                Multiselect = false,
+                Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*",
+                InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
+            };
             if (openFileDialog.ShowDialog() == true)
             {
                 foreach (string filename in openFileDialog.FileNames)
