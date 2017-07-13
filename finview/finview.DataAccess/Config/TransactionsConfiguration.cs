@@ -15,7 +15,7 @@ namespace finview.DataAccess.Config
         {
             this.ToTable("Transactions");
 
-            this.HasKey(e => new { e.TransactionDate, e.ChequeNumer });
+            this.HasKey(e => new { e.TransactionDate, e.ChequeNumer, e.ClosingBalance });
 
             this.Property(e => e.ChequeNumer)
                .HasMaxLength(100);
