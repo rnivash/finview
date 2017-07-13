@@ -10,7 +10,7 @@ using Cassandra.Data.Linq;
 
 namespace finview.DataAccess
 {
-    public class TransactionRepository : ITransactionRepository
+    public class TransactionRepository 
     {
         private static ISession _session;
 

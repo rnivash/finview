@@ -38,7 +38,17 @@ namespace finview.Business
 
                 var listTrans = _fileImportRepository.ReadTransactions(fileName, importTrack);
 
-                _transactionRepository.SaveTransactions(listTrans);
+                foreach (var item in listTrans)
+                {
+                    var tran = _transactionRepository.GetTransaction(item.TransactionDate, 
+                        item.ChequeNumer, 
+                        item.ClosingBalance);
+
+                    if(tran == null)
+                    {
+                        _transactionRepository.SaveTransactions(item);
+                    }
+                }
 
                 _fileImportRepository.SaveFileUploadTrack(importTrack);
 
