@@ -19,9 +19,42 @@ namespace finview.DataAccess
 
         public void SaveTransactions(List<Transactions> listTransaction)
         {
-            FinViewModel fvm = new FinViewModel();
-            fvm.Set<Transactions>().AddRange(listTransaction);
-            fvm.SaveChanges();
+            using (FinViewModel fvm = new FinViewModel())
+            {
+                fvm.Transactions.AddOrUpdate(listTransaction.ToArray());
+                fvm.SaveChanges();
+            }
+        }
+
+        public void SaveTransactions(Transactions tran)
+        {
+            using (FinViewModel fvm = new FinViewModel())
+            {
+                fvm.Transactions.Add(tran);
+                fvm.SaveChanges();
+            }
+        }
+
+        public Transactions GetTransaction(params object[] keyValues)
+        {
+            Transactions res = null;
+            using (FinViewModel fvm = new FinViewModel())
+            {
+                res = fvm.Transactions.Find(keyValues); 
+            }
+            return res;
+        }
+
+        public List<Transactions> GetTransaction(DateTime fromDate, DateTime toDate)
+        {
+            List<Transactions> res;
+            using (FinViewModel fvm = new FinViewModel())
+            {
+                res = fvm.Set<Transactions>()
+                    .Where(t => t.TransactionDate >= fromDate.Date && t.TransactionDate <= toDate.Date)
+                    .ToList();
+            }
+            return res;
         }
     }
 }

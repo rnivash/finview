@@ -25,6 +25,10 @@ namespace finview.DataAccess.Config
 
             this.Property(e => e.Narration)
                 .HasMaxLength(200);
+
+            this.HasOptional(t => t.TransCategory)
+                .WithMany(t => t.Transactions)
+                .HasForeignKey(d => d.CategoryId);
         }
     }
 }

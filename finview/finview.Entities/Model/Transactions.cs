@@ -34,5 +34,9 @@ namespace finview.Entities.Model
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         [MaxLength(8)]
         public byte[] posted_at { get; set; }
+
+        public int? CategoryId { get; set; }
+
+        public virtual Category TransCategory { get; set; }
     }
 }

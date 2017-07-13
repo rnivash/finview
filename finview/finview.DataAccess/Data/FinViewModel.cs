@@ -12,9 +12,14 @@ namespace finview.DataAccess.Data
         public FinViewModel()
             : base("name=finviewdb")
         {
+            
         }
 
-        public virtual DbSet<Transactions> Tables { get; set; }
+        public virtual DbSet<Category> Categorys { get; set; }
+
+        public virtual DbSet<Transactions> Transactions { get; set; }
+
+        public virtual DbSet<FileUploadTrack> FileUploadTracks { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -23,6 +28,12 @@ namespace finview.DataAccess.Data
                 .IsFixedLength();
 
             modelBuilder.Configurations.Add<Transactions>(new TransactionsConfiguration());
+
+            modelBuilder.Configurations.Add<Category>(new CategoryConfiguration());
+            //Enable-Migrations
+            //Add-migration 
+            //update-database
+
         }
     }
 }
