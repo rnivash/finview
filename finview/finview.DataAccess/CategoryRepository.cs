@@ -19,5 +19,15 @@ namespace finview.DataAccess
                 fvm.SaveChanges();
             }
         }
+
+        public List<Category> GetCategories()
+        {
+            List<Category> res;
+            using (FinViewModel fvm = new FinViewModel())
+            {
+                res = fvm.Set<Category>().ToList();
+            }
+            return res;
+        }
     }
 }

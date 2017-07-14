@@ -29,6 +29,20 @@ namespace finview.Business
             return _transactionRepository.GetTransaction();
         }
 
+        public void UpdateTransactionCategory(Transactions trans)
+        {
+            var tran = _transactionRepository.GetTransaction(trans.TransactionDate,
+                        trans.ChequeNumer,
+                        trans.ClosingBalance);
+
+            if (tran != null)
+            {
+                tran.TransCategory = trans.TransCategory;
+                tran.CategoryId = tran.TransCategory.Id;
+                _transactionRepository.SaveTransactions(tran);
+            }
+        }
+
         public void ImportTransaction(string fileName)
         {
             using(TransactionScope tr = new TransactionScope())
@@ -75,6 +89,7 @@ namespace finview.Business
             return result;
 
         }
+
         public List<Transactions> GetReportForDateRange(DateTime reportDate)
         {
             var fromdate = new DateTime(reportDate.Year, reportDate.Month,1);

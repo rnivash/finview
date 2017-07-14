@@ -22,6 +22,7 @@ using finview.Settings;
 using finview.Report;
 using finview.Entities.Unity;
 using Microsoft.Practices.Unity;
+using System.Collections.Specialized;
 
 namespace finview
 {
@@ -32,9 +33,13 @@ namespace finview
     {
         private readonly ITransactionService _transactionService;
 
-        public MainWindow(ITransactionService transactionService)
+        private readonly ICategoryService _categoryService;
+
+        public MainWindow(ITransactionService transactionService, ICategoryService categoryService)
         {
             _transactionService = transactionService;
+
+            _categoryService = categoryService;
 
             InitializeComponent();
             
@@ -44,22 +49,46 @@ namespace finview
         public void LoadTransactionGrid()
         {
             
-            ObservableCollection<Transactions> transactionsList = 
-                new ObservableCollection<Transactions>(_transactionService.GetTransaction());
-                
+            List<Transactions> transactionsList = 
+                new List<Transactions>(_transactionService.GetTransaction());
+
             dgTransaction.DataContext = transactionsList;
 
-            List<Category> cats = new List<Category>();
-            cats.Add(new Category {
-                Id = 100,
-                CategoryName = "Citi food"
-            });
-            cats.Add(new Category
+            Cato.ItemsSource = _categoryService.GetCategories();
+
+            var style = new Style(typeof(ComboBox));
+            style.Setters.Add(new EventSetter(ComboBox.SelectionChangedEvent, new SelectionChangedEventHandler(TransactionsList_CollectionChanged)));
+            Cato.EditingElementStyle = style;
+        }
+
+        private void TransactionsList_CollectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(e != null)
             {
-                Id = 200,
-                CategoryName = "Fuel"
-            });
-            Cato.ItemsSource = cats;
+                var cb = e.Source as System.Windows.Controls.ComboBox;
+                if(cb != null)
+                {
+                    var dgc = cb.Parent as System.Windows.Controls.DataGridCell;
+
+                    if(dgc != null)
+                    {
+                        var dc = dgc.DataContext as Transactions;
+                        if(dc != null)
+                        {
+                            dc.TransCategory = cb.SelectedItem as Category;
+                            _transactionService.UpdateTransactionCategory(dc);
+                        }
+                        
+                    }
+                   
+
+                }
+                
+               
+                
+                //e.Source
+            }
+            
         }
 
         private void BtnRefresh_Click(object sender, RoutedEventArgs e)
@@ -95,6 +124,11 @@ namespace finview
         {
             CategorySettings mw = new CategorySettings(FinviewContainer.Instance.Resolve<ICategoryService>());
             mw.Show();
+        }
+
+        private void BtnSave_Click(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }

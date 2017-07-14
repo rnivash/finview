@@ -10,5 +10,7 @@ namespace finview.DataAccess.Contracts
     public interface ICategoryRepository
     {
         void SaveCategory(Category cat);
+
+        List<Category> GetCategories();
     }
 }

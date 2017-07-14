@@ -24,7 +24,8 @@ namespace finview
 
             base.OnStartup(e);
 
-            MainWindow mw = new MainWindow(FinviewContainer.Instance.Resolve<ITransactionService>());
+            MainWindow mw = new MainWindow(FinviewContainer.Instance.Resolve<ITransactionService>()
+                , FinviewContainer.Instance.Resolve<ICategoryService>());
             mw.Show();
         }
         

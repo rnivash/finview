@@ -17,5 +17,7 @@ namespace finview.Business.Contracts
         ReportModel GetReport();
 
         ReportModel GetReport(DateTime reportDate);
+
+        void UpdateTransactionCategory(Transactions trans);
     }
 }

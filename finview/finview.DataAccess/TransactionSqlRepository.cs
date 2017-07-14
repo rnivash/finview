@@ -20,7 +20,8 @@ namespace finview.DataAccess
             List<Transactions> res;
             using (FinViewModel fvm = new FinViewModel())
             {
-                res = fvm.Set<Transactions>().ToList();
+                res = fvm.Set<Transactions>()
+                    .ToList();
             }
             return res;
         }
@@ -38,8 +39,20 @@ namespace finview.DataAccess
         {
             using (FinViewModel fvm = new FinViewModel())
             {
-                fvm.Transactions.Add(tran);
-                fvm.SaveChanges();
+                if(tran.posted_at == null)
+                {
+                    fvm.Transactions.Add(tran);
+                }
+                else
+                {
+                    if (fvm.Entry(tran).State == System.Data.Entity.EntityState.Detached)
+                    {
+                        fvm.Set<Transactions>().Attach(tran);
+                        fvm.Entry(tran).State = System.Data.Entity.EntityState.Modified;
+                    }
+                }
+
+                var ss = fvm.SaveChanges();
             }
         }
 

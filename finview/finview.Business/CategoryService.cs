@@ -21,5 +21,10 @@ namespace finview.Business
         {
             _categoryRepository.SaveCategory(cat);
         }
+
+        public List<Category> GetCategories()
+        {
+            return _categoryRepository.GetCategories();
+        }
     }
 }

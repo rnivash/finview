@@ -10,6 +10,9 @@ namespace finview.Business.Contracts
     public interface ICategoryService
     {
         void SaveCategory(Category cat);
-       
+
+        List<Category> GetCategories();
+
+
     }
 }

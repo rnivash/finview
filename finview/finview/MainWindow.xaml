@@ -9,21 +9,23 @@
     <Grid Margin="0,0,2,0">
         <DataGrid Name="dgTransaction" Margin="197,10,10,10" ItemsSource="{Binding}" AutoGenerateColumns="False"  ColumnWidth="*">
             <DataGrid.Columns >
-                <DataGridCheckBoxColumn Header=""  />
-                <DataGridTextColumn Header="Category" Binding="{Binding Category}" />
+                <DataGridCheckBoxColumn Header=""  />                
                 <DataGridTextColumn Header="TransactionDate"  Binding="{Binding TransactionDate}"/>
                 <DataGridTextColumn Header="Narration" Binding="{Binding Narration}" />
                 <DataGridTextColumn Header="WithdrawalAmount" Binding="{Binding WithdrawalAmount}" />
                 <DataGridTextColumn Header="DepositAmount" Binding="{Binding DepositAmount}" />                
                 <DataGridTextColumn Header="ClosingBalance" Binding="{Binding ClosingBalance}" />
-                <DataGridComboBoxColumn Header="Category" x:Name="Cato" SelectedValueBinding="{Binding Id, Mode=TwoWay}" 
-                                        DisplayMemberPath="{Binding TransCategory.CategoryName}" />
+                <DataGridComboBoxColumn Header="Category" x:Name="Cato" 
+                                        SelectedValueBinding="{Binding CategoryId}" 
+                                        SelectedValuePath="Id"
+                                        DisplayMemberPath="CategoryName"  />
             </DataGrid.Columns>
         </DataGrid>
         <Button Name="BtnImport" Content="Import" HorizontalAlignment="Left" Margin="10,24,0,0" VerticalAlignment="Top" Width="75" Click="BtnImport_Click" />
         <Button Name="BtnRefresh" Content="Refresh" HorizontalAlignment="Left" Margin="10,62,0,0" VerticalAlignment="Top" Width="75" Click="BtnRefresh_Click"/>
         <Button Name="BtnReport" Content="Report" HorizontalAlignment="Left" Margin="10,106,0,0" VerticalAlignment="Top" Width="75" Click="BtnReport_Click"/>
         <Button x:Name="BtnCategory" Content="Category" HorizontalAlignment="Left" Margin="10,151,0,0" VerticalAlignment="Top" Width="75" Click="BtnCategory_Click"/>
+        <Button x:Name="BtnSave" Content="Save" HorizontalAlignment="Left" Margin="10,192,0,0" VerticalAlignment="Top" Width="75" Click="BtnSave_Click"/>
     </Grid>
 </Window>
     
