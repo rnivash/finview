@@ -9,12 +9,39 @@
     <Grid Margin="0,0,2,0">
         <DataGrid Name="dgTransaction" Margin="197,10,10,10" ItemsSource="{Binding}" AutoGenerateColumns="False"  ColumnWidth="*">
             <DataGrid.Columns >
-                <DataGridCheckBoxColumn Header=""  />                
-                <DataGridTextColumn Header="TransactionDate"  Binding="{Binding TransactionDate}"/>
+                <DataGridCheckBoxColumn Header="" MaxWidth="30"  />
+                <DataGridTextColumn Header="TransactionDate"  MaxWidth="100"  Binding="{Binding TransactionDate, StringFormat=\{0:dd-MMM-yyyy\}}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="HorizontalAlignment" Value="Center" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
                 <DataGridTextColumn Header="Narration" Binding="{Binding Narration}" />
-                <DataGridTextColumn Header="WithdrawalAmount" Binding="{Binding WithdrawalAmount}" />
-                <DataGridTextColumn Header="DepositAmount" Binding="{Binding DepositAmount}" />                
-                <DataGridTextColumn Header="ClosingBalance" Binding="{Binding ClosingBalance}" />
+                <DataGridTextColumn Header="WithdrawalAmount" Binding="{Binding WithdrawalAmount}" >
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="HorizontalAlignment" Value="Right" />
+                            <Setter Property="Foreground" Value="Red"/>
+                            <Setter Property="FontWeight" Value="Bold"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="DepositAmount" Binding="{Binding DepositAmount}" >
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="HorizontalAlignment" Value="Right" />
+                            <Setter Property="Foreground" Value="Green"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="ClosingBalance" Binding="{Binding ClosingBalance}" >
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="HorizontalAlignment" Value="Right" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
                 <DataGridComboBoxColumn Header="Category" x:Name="Cato" 
                                         SelectedValueBinding="{Binding CategoryId}" 
                                         SelectedValuePath="Id"
