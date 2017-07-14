@@ -21,8 +21,6 @@ namespace finview.DataAccess.Data
 
         public virtual DbSet<FileUploadTrack> FileUploadTracks { get; set; }
 
-        public virtual DbSet<FileUploadTrack> FileUploadTracks { get; set; }
-
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add<Transactions>(new TransactionsConfiguration());

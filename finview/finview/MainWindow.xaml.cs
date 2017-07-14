@@ -47,7 +47,8 @@ namespace finview
             ObservableCollection<Transactions> transactionsList = 
                 new ObservableCollection<Transactions>(_transactionService.GetTransaction());
                 
-            dgTransaction.DataContext = TransactionsList;
+            dgTransaction.DataContext = transactionsList;
+
             List<Category> cats = new List<Category>();
             cats.Add(new Category {
                 Id = 100,
