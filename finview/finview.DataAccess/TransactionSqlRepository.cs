@@ -6,6 +6,10 @@ using System.Text;
 using System.Threading.Tasks;
 using finview.Entities.Model;
 using finview.DataAccess.Data;
+using System;
+using System.Data.Entity.Migrations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
 
 namespace finview.DataAccess
 {
@@ -13,8 +17,12 @@ namespace finview.DataAccess
     {
         public List<Transactions> GetTransaction()
         {
-            FinViewModel fvm = new FinViewModel();
-            return fvm.Set<Transactions>().ToList();
+            List<Transactions> res;
+            using (FinViewModel fvm = new FinViewModel())
+            {
+                res = fvm.Set<Transactions>().ToList();
+            }
+            return res;
         }
 
         public void SaveTransactions(List<Transactions> listTransaction)
@@ -40,7 +48,7 @@ namespace finview.DataAccess
             Transactions res = null;
             using (FinViewModel fvm = new FinViewModel())
             {
-                res = fvm.Transactions.Find(keyValues); 
+                res = fvm.Transactions.Find(keyValues);
             }
             return res;
         }

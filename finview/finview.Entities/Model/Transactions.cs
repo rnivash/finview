@@ -9,17 +9,14 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace finview.Entities.Model
 {
-    [Table("Transactions")]
     public class Transactions
     {
-        [Key]
         public DateTime TransactionDate { get; set; }
 
         public DateTime? TransactionValueDate { get; set; }
         
         public string Narration { get; set; }
 
-        [Key]
         public string ChequeNumer { get; set; }
 
         public decimal? WithdrawalAmount { get; set; }
@@ -30,11 +27,12 @@ namespace finview.Entities.Model
 
         public string Category { get; set; }
 
-        [Column(TypeName = "timestamp")]
-        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
-        [MaxLength(8)]
         public byte[] posted_at { get; set; }
 
+        public long FileUploadTrackId { get; set; }
+
+        public virtual FileUploadTrack FileUploadTrack { get; set; }
+  
         public int? CategoryId { get; set; }
 
         public virtual Category TransCategory { get; set; }

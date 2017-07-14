@@ -10,7 +10,7 @@ using Cassandra.Data.Linq;
 
 namespace finview.DataAccess
 {
-    public class TransactionRepository : ITransactionRepository
+    public class TransactionRepository 
     {
         private static ISession _session;
 
@@ -53,6 +53,11 @@ namespace finview.DataAccess
         }
 
         public List<Transactions> GetTransaction()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Transactions> GetTransaction(DateTime fromDate, DateTime toDate)
         {
             throw new NotImplementedException();
         }

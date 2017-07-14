@@ -6,13 +6,28 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.VisualBasic.FileIO;
 using finview.Entities.Model;
+using finview.DataAccess.Data;
+using System.Globalization;
 
 namespace finview.DataAccess
 {
     public class FileImportRepository : IFileImportRepository
     {
 
-        public List<Transactions> ReadTransactions(string fileName)
+        public FileUploadTrack InitiateImport()
+        {
+            FileUploadTrack fut = new FileUploadTrack();
+            using (FinViewModel fvm = new FinViewModel())
+            {
+                fut.Status = ImportStatus.Inprogress;
+                fut.UploadDate = DateTime.Now;
+                fvm.Set<FileUploadTrack>().Add(fut);
+                fvm.SaveChanges();
+            }
+            return fut;
+        }
+
+        public List<Transactions> ReadTransactions(string fileName, FileUploadTrack fut)
         {
             List<Transactions> result = new List<Transactions>();
 
@@ -30,11 +45,17 @@ namespace finview.DataAccess
                 {
                     var trans = new Transactions();
 
+                    trans.FileUploadTrackId = fut.Id;
+
                     // Read current line fields, pointer moves to the next line.
                     string[] fields = csvParser.ReadFields();
 
                     DateTime dt;
-                    if (DateTime.TryParse(fields[0], out dt))
+                    if (DateTime.TryParseExact(fields[0],
+                        new string[] { "d/M/y", "dd/MM/y", "dd/MM/yy" },
+                       CultureInfo.InvariantCulture,
+                       DateTimeStyles.None,
+                       out dt))
                     {
                         trans.TransactionDate = dt;
                     }
@@ -68,6 +89,28 @@ namespace finview.DataAccess
             }
 
             return result;
+        }
+
+        public void SaveFileUploadTrack(FileUploadTrack fut)
+        {
+            using (FinViewModel fvm = new FinViewModel())
+            {
+                if(fut.Id == 0)
+                {
+                    fvm.Set<FileUploadTrack>().Add(fut);
+                }
+                else
+                {
+                    if(fvm.Entry(fut).State == System.Data.Entity.EntityState.Detached)
+                    {
+                        fvm.Set<FileUploadTrack>().Attach(fut);
+                    }
+                }
+
+                fut.Status = ImportStatus.Uploaded;
+
+                fvm.SaveChanges();
+            }
         }
     }
 }

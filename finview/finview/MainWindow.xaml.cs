@@ -19,6 +19,7 @@ using System.Windows.Shapes;
 using System.IO;
 using Microsoft.VisualBasic.FileIO;
 using finview.Settings;
+using finview.Report;
 using finview.Entities.Unity;
 using Microsoft.Practices.Unity;
 
@@ -29,7 +30,7 @@ namespace finview
     /// </summary>
     public partial class MainWindow : Window
     {
-        private ITransactionService _transactionService;
+        private readonly ITransactionService _transactionService;
 
         public MainWindow(ITransactionService transactionService)
         {
@@ -43,9 +44,9 @@ namespace finview
         public void LoadTransactionGrid()
         {
             
-            ObservableCollection<Transactions> TransactionsList = 
+            ObservableCollection<Transactions> transactionsList = 
                 new ObservableCollection<Transactions>(_transactionService.GetTransaction());
-            
+                
             dgTransaction.DataContext = TransactionsList;
             List<Category> cats = new List<Category>();
             cats.Add(new Category {
@@ -67,10 +68,12 @@ namespace finview
 
         private void BtnImport_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Multiselect = false;
-            openFileDialog.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
-            openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            OpenFileDialog openFileDialog = new OpenFileDialog
+            {
+                Multiselect = false,
+                Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*",
+                InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
+            };
             if (openFileDialog.ShowDialog() == true)
             {
                 foreach (string filename in openFileDialog.FileNames)
@@ -80,8 +83,13 @@ namespace finview
                 }
             }
         }
-       
 
+        private void BtnReport_Click(object sender, RoutedEventArgs e)
+        {
+            MonthlyReport mw = new MonthlyReport(FinviewContainer.Instance.Resolve<ITransactionService>());
+            mw.Show();
+        }
+        
         private void BtnCategory_Click(object sender, RoutedEventArgs e)
         {
             CategorySettings mw = new CategorySettings(FinviewContainer.Instance.Resolve<ICategoryService>());

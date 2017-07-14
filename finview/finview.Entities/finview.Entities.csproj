@@ -76,6 +76,7 @@
     <Compile Include="Model\Transactions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Unity\FinviewContainer.cs" />
+    <Compile Include="ViewModel\ReportModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
