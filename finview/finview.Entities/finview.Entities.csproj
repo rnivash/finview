@@ -70,6 +70,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\BankAccount.cs" />
+    <Compile Include="Model\Category.cs" />
     <Compile Include="Model\FileUploadTrack.cs" />
     <Compile Include="Model\ImportStatus.cs" />
     <Compile Include="Model\Transactions.cs" />

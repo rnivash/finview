@@ -37,6 +37,10 @@ namespace finview.DataAccess.Config
                .WithMany(t => t.Transactions)
                .HasForeignKey(d => d.FileUploadTrackId)
                .WillCascadeOnDelete(true);
+
+            this.HasOptional(t => t.TransCategory)
+                .WithMany(t => t.Transactions)
+                .HasForeignKey(d => d.CategoryId);
         }
     }
 }

@@ -18,6 +18,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO;
 using Microsoft.VisualBasic.FileIO;
+using finview.Settings;
 using finview.Report;
 using finview.Entities.Unity;
 using Microsoft.Practices.Unity;
@@ -45,8 +46,19 @@ namespace finview
             
             ObservableCollection<Transactions> transactionsList = 
                 new ObservableCollection<Transactions>(_transactionService.GetTransaction());
-            
-            dgTransaction.DataContext = transactionsList;
+                
+            dgTransaction.DataContext = TransactionsList;
+            List<Category> cats = new List<Category>();
+            cats.Add(new Category {
+                Id = 100,
+                CategoryName = "Citi food"
+            });
+            cats.Add(new Category
+            {
+                Id = 200,
+                CategoryName = "Fuel"
+            });
+            Cato.ItemsSource = cats;
         }
 
         private void BtnRefresh_Click(object sender, RoutedEventArgs e)
@@ -75,6 +87,12 @@ namespace finview
         private void BtnReport_Click(object sender, RoutedEventArgs e)
         {
             MonthlyReport mw = new MonthlyReport(FinviewContainer.Instance.Resolve<ITransactionService>());
+            mw.Show();
+        }
+        
+        private void BtnCategory_Click(object sender, RoutedEventArgs e)
+        {
+            CategorySettings mw = new CategorySettings(FinviewContainer.Instance.Resolve<ICategoryService>());
             mw.Show();
         }
     }

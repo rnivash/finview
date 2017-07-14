@@ -15,7 +15,8 @@ namespace finview.DataAccess.Boot
         {
             FinviewContainer.Instance
                 .RegisterType<ITransactionRepository, TransactionSqlRepository>()
-                .RegisterType<IFileImportRepository, FileImportRepository>();
+                .RegisterType<IFileImportRepository, FileImportRepository>()
+                .RegisterType<ICategoryRepository, CategoryRepository>();
         }
     }
 }

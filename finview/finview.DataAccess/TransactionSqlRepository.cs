@@ -29,7 +29,7 @@ namespace finview.DataAccess
         {
             using (FinViewModel fvm = new FinViewModel())
             {
-                fvm.Tables.AddOrUpdate(listTransaction.ToArray());
+                fvm.Transactions.AddOrUpdate(listTransaction.ToArray());
                 fvm.SaveChanges();
             }
         }
@@ -38,7 +38,7 @@ namespace finview.DataAccess
         {
             using (FinViewModel fvm = new FinViewModel())
             {
-                fvm.Tables.Add(tran);
+                fvm.Transactions.Add(tran);
                 fvm.SaveChanges();
             }
         }
@@ -48,7 +48,7 @@ namespace finview.DataAccess
             Transactions res = null;
             using (FinViewModel fvm = new FinViewModel())
             {
-                res = fvm.Tables.Find(keyValues); 
+                res = fvm.Transactions.Find(keyValues);
             }
             return res;
         }
