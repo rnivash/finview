@@ -42,53 +42,46 @@ namespace finview
             _categoryService = categoryService;
 
             InitializeComponent();
-            
+
+            dpTransGrid.SelectedDate = DateTime.Now;
+
             LoadTransactionGrid();
         }
 
-        public void LoadTransactionGrid()
+        public async void LoadTransactionGrid()
         {
-            
-            List<Transactions> transactionsList = 
-                new List<Transactions>(_transactionService.GetTransaction());
+            var dt = dpTransGrid.SelectedDate.GetValueOrDefault();
 
-            dgTransaction.DataContext = transactionsList;
+            Cato.ItemsSource = await Task.Factory.StartNew(() => {
+                return _categoryService.GetCategories();
+            });
 
-            Cato.ItemsSource = _categoryService.GetCategories();
+            dgTransaction.DataContext = await Task.Factory.StartNew(() => {
+                return _transactionService.GetTransaction(dt);
+            });           
 
-            var style = new Style(typeof(ComboBox));
-            style.Setters.Add(new EventSetter(ComboBox.SelectionChangedEvent, new SelectionChangedEventHandler(TransactionsList_CollectionChanged)));
-            Cato.EditingElementStyle = style;
+           
         }
 
-        private void TransactionsList_CollectionChanged(object sender, SelectionChangedEventArgs e)
+        private void Cato_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if(e != null)
             {
-                var cb = e.Source as System.Windows.Controls.ComboBox;
-                if(cb != null)
+                var cbSource = e.Source as ComboBox;
+                if(cbSource != null)
                 {
-                    var dgc = cb.Parent as System.Windows.Controls.DataGridCell;
-
-                    if(dgc != null)
+                    var dgcParent = cbSource.Parent as DataGridCell;
+                    if(dgcParent != null)
                     {
-                        var dc = dgc.DataContext as Transactions;
-                        if(dc != null)
+                        var dcTransaction = dgcParent.DataContext as Transactions;
+                        if(dcTransaction != null)
                         {
-                            dc.TransCategory = cb.SelectedItem as Category;
-                            _transactionService.UpdateTransactionCategory(dc);
+                            dcTransaction.TransCategory = cbSource.SelectedItem as Category;
+                            _transactionService.UpdateTransactionCategory(dcTransaction);
                         }
-                        
                     }
-                   
-
                 }
-                
-               
-                
-                //e.Source
             }
-            
         }
 
         private void BtnRefresh_Click(object sender, RoutedEventArgs e)
@@ -109,7 +102,6 @@ namespace finview
                 foreach (string filename in openFileDialog.FileNames)
                 {
                     _transactionService.ImportTransaction(filename);
-                    //System.IO.Path.GetFileName(filename);
                 }
             }
         }
@@ -129,6 +121,11 @@ namespace finview
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
             
+        }
+
+        private void dpTransGrid_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            LoadTransactionGrid();
         }
     }
 }

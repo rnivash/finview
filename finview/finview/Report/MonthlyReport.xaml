@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:finview.Report"
         mc:Ignorable="d"
-        Title="MonthlyReport" Height="378.947" Width="1037.594">
+        Title="MonthlyReport" Height="378.947" Width="1037.594" WindowState="Maximized">
     <Grid Margin="0,0,33,0" Height="340" VerticalAlignment="Top">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="113*"/>

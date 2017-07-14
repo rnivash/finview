@@ -113,5 +113,13 @@ namespace finview.Business
                 .GetValueOrDefault();
 
         }
+
+        public List<Transactions> GetTransaction(DateTime reportDate)
+        {
+            var fromdate = new DateTime(reportDate.Year, reportDate.Month, 1);
+            var enddate = new DateTime(reportDate.Year, reportDate.Month, DateTime.DaysInMonth(reportDate.Year, reportDate.Month));
+            // DateTime fromDate = reportDate.Date.
+            return _transactionRepository.GetTransaction(fromdate, enddate);
+        }
     }
 }

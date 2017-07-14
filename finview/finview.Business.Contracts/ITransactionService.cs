@@ -12,6 +12,8 @@ namespace finview.Business.Contracts
     {
         List<Transactions> GetTransaction();
 
+        List<Transactions> GetTransaction(DateTime reportDate);
+
         void ImportTransaction(string fileName);
 
         ReportModel GetReport();
