@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Boot\FinviewBusinessInit.cs" />
+    <Compile Include="CategoryService.cs" />
     <Compile Include="TransactionService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

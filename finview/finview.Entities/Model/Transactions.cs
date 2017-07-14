@@ -32,5 +32,9 @@ namespace finview.Entities.Model
         public long FileUploadTrackId { get; set; }
 
         public virtual FileUploadTrack FileUploadTrack { get; set; }
+  
+        public int? CategoryId { get; set; }
+
+        public virtual Category TransCategory { get; set; }
     }
 }
