@@ -11,5 +11,7 @@ namespace finview.Entities.ViewModel
         public decimal Income { get; set; }
 
         public decimal Expense { get; set; }
+
+        public List<KeyValuePair<string, decimal>> CategoryTrans { get; set; }
     }
 }

@@ -20,11 +20,11 @@ namespace finview.Report
     /// </summary>
     public partial class MonthlyReport : Window
     {
-        private ITransactionService _transactionService;
+        private IReportService _reportService;
 
-        public MonthlyReport(ITransactionService transactionService)
+        public MonthlyReport(IReportService reportService)
         {
-            _transactionService = transactionService;
+            _reportService = reportService;
 
             InitializeComponent();
 
@@ -34,17 +34,20 @@ namespace finview.Report
         public void LoadTransactionGrid()
         {
 
-            var result = _transactionService.GetReport();
+            var result = _reportService.GetReport();
             lblexpense.Content = result.Expense;
             lblincome.Content = result.Income;
+            pieChart.DataContext = result.CategoryTrans;
+
         }
 
         private void dpreportdate_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
 
-            var result = _transactionService.GetReport(dpreportdate.SelectedDate.GetValueOrDefault());
+            var result = _reportService.GetReport(dpreportdate.SelectedDate.GetValueOrDefault());
             lblexpense.Content = result.Expense;
             lblincome.Content = result.Income;
+            pieChart.DataContext = result.CategoryTrans;
         }
     }
 }

@@ -16,7 +16,8 @@ namespace finview.Business.Boot
         {
             FinviewContainer.Instance
                 .RegisterType<ITransactionService, TransactionService>()
-                .RegisterType<ICategoryService, CategoryService>();
+                .RegisterType<ICategoryService, CategoryService>()
+                .RegisterType<IReportService, ReportService>();
 
             FinviewDataAccessInit.Init();
         }

@@ -1,38 +1,33 @@
-﻿<Window x:Class="finview.Report.MonthlyReport"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:finview.Report"
+        xmlns:Primitives="clr-namespace:System.Windows.Controls.Primitives;assembly=System.Windows.Controls.Layout.Toolkit" 
+        xmlns:chartingToolkit="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit" 
+        x:Class="finview.Report.MonthlyReport"
         mc:Ignorable="d"
-        Title="MonthlyReport" Height="378.947" Width="1037.594" WindowState="Maximized">
-    <Grid Margin="0,0,33,0" Height="340" VerticalAlignment="Top">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="113*"/>
-            <ColumnDefinition Width="391*"/>
-        </Grid.ColumnDefinitions>
-        <Label Name="lblexpense" Content="0" HorizontalAlignment="Left" Margin="57,66,0,0" VerticalAlignment="Top" Height="222" Width="438" RenderTransformOrigin="0.5,0.5" Foreground="#FFF32D2D" Background="White" FontSize="72" Grid.ColumnSpan="2">
-            <Label.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform AngleX="7.215"/>
-                    <RotateTransform/>
-                    <TranslateTransform X="6.076"/>
-                </TransformGroup>
-            </Label.RenderTransform>
-        </Label>
-        <Label Name="lblincome" Content="0" HorizontalAlignment="Left" Margin="287,73,0,0" VerticalAlignment="Top" Height="222" Width="434" RenderTransformOrigin="0.5,0.5" Background="#FFF8FBF7" Foreground="#FF2DF019" FontSize="72" Grid.Column="1">
-            <Label.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform AngleX="7.215"/>
-                    <RotateTransform/>
-                    <TranslateTransform X="6.076"/>
-                </TransformGroup>
-            </Label.RenderTransform>
-        </Label>
-        <DatePicker Name="dpreportdate" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" SelectedDateChanged="dpreportdate_SelectedDateChanged" />
+        Title="MonthlyReport" Height="548.947" Width="1037.594" WindowState="Maximized">
 
+    <Grid Margin="0,0,2,7">
+
+        <DatePicker x:Name="dpreportdate" HorizontalAlignment="Left" Margin="10,10,0,0" 
+                    VerticalAlignment="Top" SelectedDateChanged="dpreportdate_SelectedDateChanged" Width="141" />
+
+        <chartingToolkit:Chart  Name="pieChart" Margin="394,10,10,10"  >
+            <chartingToolkit:PieSeries DependentValuePath="Value" 
+                                       IndependentValuePath="Key" 
+                                       ItemsSource="{Binding}" 
+                                       IsSelectionEnabled="True" Margin="0,0,1,3"
+                                       />
+        </chartingToolkit:Chart>
+        <Label Name="lblexpense" Margin="10,103,0,0" Foreground="#FFF70526" FontFamily="Arial" FontSize="48" FontWeight="Bold" Background="#FFF9E6E3" HorizontalAlignment="Left" Width="365" Height="87" VerticalAlignment="Top">
+        </Label>
+        <Label Name="lblincome" Content="Label" Margin="10,256,0,0" FontWeight="Bold" FontFamily="Arial" FontSize="48" Foreground="#FF1CA805" Background="#FFDEF3C4" HorizontalAlignment="Left" Width="365" Height="94" VerticalAlignment="Top"/>
+        
 
     </Grid>
 </Window>
+
+    

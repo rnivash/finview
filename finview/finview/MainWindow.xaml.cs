@@ -59,8 +59,6 @@ namespace finview
             dgTransaction.DataContext = await Task.Factory.StartNew(() => {
                 return _transactionService.GetTransaction(dt);
             });           
-
-           
         }
 
         private void Cato_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -108,7 +106,7 @@ namespace finview
 
         private void BtnReport_Click(object sender, RoutedEventArgs e)
         {
-            MonthlyReport mw = new MonthlyReport(FinviewContainer.Instance.Resolve<ITransactionService>());
+            MonthlyReport mw = new MonthlyReport(FinviewContainer.Instance.Resolve<IReportService>());
             mw.Show();
         }
         
