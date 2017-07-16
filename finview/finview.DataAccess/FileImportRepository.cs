@@ -52,7 +52,7 @@ namespace finview.DataAccess
 
                     DateTime dt;
                     if (DateTime.TryParseExact(fields[0],
-                        new string[] { "d/M/y", "dd/MM/y", "dd/MM/yy" },
+                        new string[] { "d/M/y", "dd/MM/y", "dd/MM/yy", "dd-MM-yy", "dd/MM/yyyy", "d/M/yyyy" },
                        CultureInfo.InvariantCulture,
                        DateTimeStyles.None,
                        out dt))
