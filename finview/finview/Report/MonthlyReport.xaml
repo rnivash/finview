@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:finview.Report"
         xmlns:Primitives="clr-namespace:System.Windows.Controls.Primitives;assembly=System.Windows.Controls.Layout.Toolkit" 
         xmlns:chartingToolkit="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit" 
+        xmlns:Controls="clr-namespace:finview.Controls" 
         x:Class="finview.Report.MonthlyReport"
         mc:Ignorable="d"
         Title="MonthlyReport" Height="548.947" Width="1037.594" WindowState="Maximized">
@@ -15,17 +16,20 @@
         <DatePicker x:Name="dpreportdate" HorizontalAlignment="Left" Margin="10,10,0,0" 
                     VerticalAlignment="Top" SelectedDateChanged="dpreportdate_SelectedDateChanged" Width="141" />
 
-        <chartingToolkit:Chart  Name="pieChart" Margin="394,10,10,10"  >
+        <chartingToolkit:Chart  x:Name="pieChart" Margin="394,10,10,10"  >
             <chartingToolkit:PieSeries DependentValuePath="Value" 
                                        IndependentValuePath="Key" 
                                        ItemsSource="{Binding}" 
                                        IsSelectionEnabled="True" Margin="0,0,1,3"
+                                     
                                        />
         </chartingToolkit:Chart>
-        <Label Name="lblexpense" Margin="10,103,0,0" Foreground="#FFF70526" FontFamily="Arial" FontSize="48" FontWeight="Bold" Background="#FFF9E6E3" HorizontalAlignment="Left" Width="365" Height="87" VerticalAlignment="Top">
-        </Label>
-        <Label Name="lblincome" Content="Label" Margin="10,256,0,0" FontWeight="Bold" FontFamily="Arial" FontSize="48" Foreground="#FF1CA805" Background="#FFDEF3C4" HorizontalAlignment="Left" Width="365" Height="94" VerticalAlignment="Top"/>
-        
+        <Label x:Name="lblexpense" Margin="10,103,0,0" Foreground="#FFF70526" FontFamily="Arial" FontSize="48" FontWeight="Bold" Background="#FFF9E6E3" HorizontalAlignment="Left" Width="365" Height="87" VerticalAlignment="Top"/>
+        <Label x:Name="lblincome" Content="Label" Margin="10,256,0,0" FontWeight="Bold" FontFamily="Arial" FontSize="48" Foreground="#FF1CA805" Background="#FFDEF3C4" HorizontalAlignment="Left" Width="365" Height="94" VerticalAlignment="Top"/>
+
+
+        <Controls:ucMonthNavigation x:Name="ucMonthNavigationctrl" HorizontalAlignment="Left" Height="59" Margin="40,393,0,0" VerticalAlignment="Top" Width="232"/>
+
 
     </Grid>
 </Window>

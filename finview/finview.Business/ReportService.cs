@@ -33,7 +33,9 @@ namespace finview.Business
                 {
                     Category = gp.First().CategoryId,
                     Amount = gp.Sum(a => a.WithdrawalAmount)
-                }).Select(gp => new
+                })
+                .Where(f => f.Amount > 0)
+                .Select(gp => new
                 {
                     Category = gp.Category == null? 4: gp.Category,
                     Amount = gp.Amount

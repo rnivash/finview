@@ -1,0 +1,14 @@
+﻿<UserControl x:Class="finview.Controls.ucMonthNavigation"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:finview.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="70" d:DesignWidth="232">
+    <Grid >
+        <Button Name="btnforward" Click="btnforward_Click" Content="&gt;&gt;" Margin="0,20,6,0" Height="28" VerticalAlignment="Top" HorizontalAlignment="Right" Width="40"/>
+        <Button Name="btnbackward" Click="btnbackward_Click" Content="&lt;&lt;" Margin="6,20,0,0" Height="28" VerticalAlignment="Top" HorizontalAlignment="Left" Width="40"/>
+        <Label Name="lblActiveMonth" Content="." Margin="0,16,65,0" Foreground="#FF1463EE" FontWeight="Bold" FontSize="16" Height="39" VerticalAlignment="Top" HorizontalAlignment="Right" Width="99"/>
+    </Grid>
+</UserControl>

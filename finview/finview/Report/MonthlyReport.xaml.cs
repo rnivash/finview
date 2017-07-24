@@ -1,4 +1,5 @@
 ﻿using finview.Business.Contracts;
+using finview.Controls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,6 +30,20 @@ namespace finview.Report
             InitializeComponent();
 
             LoadTransactionGrid();
+
+            ucMonthNavigationctrl.dateChanged += UcMonthNavigationctrl_dateChanged;
+        }
+
+        private void UcMonthNavigationctrl_dateChanged(object sender, EventArgs e)
+        {
+            var ucMonthNavigationobj = sender as ucMonthNavigation;
+            if(ucMonthNavigationobj != null)
+            {
+                var result = _reportService.GetReport(ucMonthNavigationobj.ActiveDate);
+                lblexpense.Content = result.Expense;
+                lblincome.Content = result.Income;
+                pieChart.DataContext = result.CategoryTrans;
+            }
         }
 
         public void LoadTransactionGrid()

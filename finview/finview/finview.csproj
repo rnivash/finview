@@ -79,12 +79,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controls\ucMonthNavigation.xaml.cs">
+      <DependentUpon>ucMonthNavigation.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Report\MonthlyReport.xaml.cs">
       <DependentUpon>MonthlyReport.xaml</DependentUpon>
     </Compile>
     <Compile Include="Settings\CategorySettings.xaml.cs">
       <DependentUpon>CategorySettings.xaml</DependentUpon>
     </Compile>
+    <Page Include="Controls\ucMonthNavigation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

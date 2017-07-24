@@ -73,6 +73,7 @@ namespace finview.DataAccess
             {
                 res = fvm.Set<Transactions>()
                     .Where(t => t.TransactionDate >= fromDate.Date && t.TransactionDate <= toDate.Date)
+                    .OrderBy(o => o.TransactionDate)
                     .ToList();
             }
             return res;

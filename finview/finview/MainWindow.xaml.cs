@@ -23,6 +23,7 @@ using finview.Report;
 using finview.Entities.Unity;
 using Microsoft.Practices.Unity;
 using System.Collections.Specialized;
+using finview.Controls;
 
 namespace finview
 {
@@ -45,7 +46,20 @@ namespace finview
 
             dpTransGrid.SelectedDate = DateTime.Now;
 
+            ucNavigation.dateChanged += UcNavigation_dateChanged;
+
             LoadTransactionGrid();
+        }
+
+        private void UcNavigation_dateChanged(object sender, EventArgs e)
+        {
+            var ucMonthNavigationobj = sender as ucMonthNavigation;
+            if (ucMonthNavigationobj != null)
+            {
+                dpTransGrid.SelectedDate = ucMonthNavigationobj.ActiveDate;
+                LoadTransactionGrid();
+            }
+            
         }
 
         public async void LoadTransactionGrid()
@@ -125,5 +139,7 @@ namespace finview
         {
             LoadTransactionGrid();
         }
+
+        
     }
 }
