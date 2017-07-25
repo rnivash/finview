@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525" WindowStartupLocation="CenterScreen" WindowState="Maximized">
     <Grid Margin="0,0,2,0">
-        <DataGrid x:Name="dgTransaction" Margin="197,10,10,42" ItemsSource="{Binding}" AutoGenerateColumns="False"  ColumnWidth="*">
+        <DataGrid x:Name="dgTransaction" Margin="197,10,10,42" RowEditEnding ="dgTransaction_RowEditEnding" ItemsSource="{Binding}" AutoGenerateColumns="False"  ColumnWidth="*">
             <DataGrid.Columns >
                 <DataGridCheckBoxColumn Header="" MaxWidth="30"  />
                 <DataGridTextColumn Header="TransactionDate"  MaxWidth="100"  Binding="{Binding TransactionDate, StringFormat=\{0:dd-MMM-yyyy\}}">
@@ -18,7 +18,9 @@
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Narration" Binding="{Binding Narration}" />
+                <DataGridTextColumn  MinWidth="500" Header="Narration" Binding="{Binding Narration}" >
+                   
+                </DataGridTextColumn>
                 <DataGridTextColumn Header="WithdrawalAmount" Binding="{Binding WithdrawalAmount}" >
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="{x:Type TextBlock}">

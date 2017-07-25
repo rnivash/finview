@@ -140,6 +140,19 @@ namespace finview
             LoadTransactionGrid();
         }
 
-        
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void TextBlock_LostFocus(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void dgTransaction_RowEditEnding(object sender, DataGridRowEditEndingEventArgs e)
+        {
+
+        }
     }
 }

@@ -93,6 +93,10 @@
     <Compile Include="Migrations\201707132045199_Category.Designer.cs">
       <DependentUpon>201707132045199_Category.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201707242016302_UserNarration.cs" />
+    <Compile Include="Migrations\201707242016302_UserNarration.Designer.cs">
+      <DependentUpon>201707242016302_UserNarration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="TransactionSqlRepository.cs" />
     <Compile Include="TransactionRepository.cs" />
@@ -122,6 +126,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201707132045199_Category.resx">
       <DependentUpon>201707132045199_Category.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707242016302_UserNarration.resx">
+      <DependentUpon>201707242016302_UserNarration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

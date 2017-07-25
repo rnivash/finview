@@ -17,6 +17,8 @@ namespace finview.Entities.Model
         
         public string Narration { get; set; }
 
+        public string UserNarration { get; set; }
+
         public string ChequeNumer { get; set; }
 
         public decimal? WithdrawalAmount { get; set; }
