@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>finview.DataAccess.Tests</RootNamespace>
     <AssemblyName>finview.DataAccess.Tests</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">15.0</VisualStudioVersion>
@@ -54,6 +54,7 @@
       <HintPath>..\packages\MSTest.TestFramework.1.1.11\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+	<Reference Include="System.Runtime" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
   </ItemGroup>
@@ -75,6 +76,10 @@
     <ProjectReference Include="..\finview.Entities\finview.Entities.csproj">
       <Project>{77ec573c-ff76-4d89-98cb-3a724520995f}</Project>
       <Name>finview.Entities</Name>
+    </ProjectReference>
+	<ProjectReference Include="..\finview.DataAccess.Contracts\finview.DataAccess.Contracts.csproj">
+      <Project>{C4A756CA-AF94-4F48-82CE-979603B36D52}</Project>
+      <Name>finview.DataAccess.Contracts</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

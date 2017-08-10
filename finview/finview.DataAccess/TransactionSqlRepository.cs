@@ -6,10 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using finview.Entities.Model;
 using finview.DataAccess.Data;
-using System;
 using System.Data.Entity.Migrations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
 
 namespace finview.DataAccess
 {
