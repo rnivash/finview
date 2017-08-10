@@ -1,0 +1,1 @@
+.\migrate.exe finview.DataAccess.dll /startupConfigurationFile="finview.exe.config"
