@@ -9,7 +9,7 @@ namespace finview.DataAccess.Tests
         [TestMethod]
         public void TestMethod1()
         {
-            TransactionSqlRepository tr = new TransactionSqlRepository();
+            TransactionRepository tr = new TransactionRepository();
             var result = tr.GetTransaction();
             Assert.IsNotNull(result);
         }
@@ -17,8 +17,7 @@ namespace finview.DataAccess.Tests
 
         public static void Main(string[] aaa)
         {
-            TransactionRepository tr = new TransactionRepository();
-            tr.GetData();
+           
         }
     }
 }
