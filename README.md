@@ -4,7 +4,7 @@ Manage all your bank transaction in one place.
 
 A rich dashbaord where one can easily visualize thier expenses.
 
-Supported bank statement files
+Currently, following bank statement only supported
 * HDFC
 * SBI
 * ICICI
