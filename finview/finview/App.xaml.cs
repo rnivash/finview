@@ -1,14 +1,5 @@
-﻿using finview.Business.Contracts;
-using finview.Entities.Unity;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using finview.Business.Boot;
 using System.Windows;
-using Microsoft.Practices.Unity;
-using finview.Business.Boot;
 
 namespace finview
 {
@@ -37,9 +28,8 @@ namespace finview
 
             base.OnStartup(e);
 
-            MainWindow mw = new MainWindow(FinviewContainer.Instance.Resolve<ITransactionService>()
-                , FinviewContainer.Instance.Resolve<ICategoryService>());
-            mw.Show();
+            FinviewMdi nmw = new FinviewMdi();
+            nmw.Show();
         }
         
     }

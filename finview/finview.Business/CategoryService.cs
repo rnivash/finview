@@ -26,5 +26,10 @@ namespace finview.Business
         {
             return _categoryRepository.GetCategories();
         }
+
+        public void RemoveCategory(Category cat)
+        {
+            _categoryRepository.RemoveCategory(cat);
+        }
     }
 }

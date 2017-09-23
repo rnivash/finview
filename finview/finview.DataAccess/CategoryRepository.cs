@@ -29,5 +29,15 @@ namespace finview.DataAccess
             }
             return res;
         }
+
+        public void RemoveCategory(Category cat)
+        {
+            using (FinViewModel fvm = new FinViewModel())
+            {
+                fvm.Categorys.Attach(cat);
+                fvm.Categorys.Remove(cat);
+                fvm.SaveChanges();
+            }
+        }
     }
 }

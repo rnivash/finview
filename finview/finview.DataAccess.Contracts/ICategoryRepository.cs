@@ -11,6 +11,8 @@ namespace finview.DataAccess.Contracts
     {
         void SaveCategory(Category cat);
 
+        void RemoveCategory(Category cat);
+
         List<Category> GetCategories();
     }
 }
