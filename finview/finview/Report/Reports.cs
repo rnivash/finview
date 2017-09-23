@@ -2,6 +2,7 @@
 using finview.Controls;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Forms;
 
@@ -28,11 +29,11 @@ namespace finview.Report
             MyMdi = this.MdiParent as FinviewMdi;
             MyMdi.ShowMonthControls(true);
 
-            LoadTransactionGrid();
-
             MyMdi.dpTransGrid.Value = DateTime.Now;
 
             MyMdi.ucNavigation.dateChanged += UcMonthNavigationctrl_dateChanged;
+
+            LoadTransactionGrid();
         }
 
         private void UcMonthNavigationctrl_dateChanged(object sender, EventArgs e)
@@ -63,10 +64,13 @@ namespace finview.Report
             
         }
 
-        public void LoadTransactionGrid()
+        public async void LoadTransactionGrid()
         {
-
-            var result = _reportService.GetReport();
+            var result = await Task.Factory.StartNew(() =>
+            {
+                return _reportService.GetReport(); 
+            });
+            
             lblexpense.Text = result.Expense.ToString();
             lblincome.Text = result.Income.ToString();
 
