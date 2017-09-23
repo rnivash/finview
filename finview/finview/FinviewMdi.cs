@@ -25,7 +25,12 @@ namespace finview
 
         private void LoadMdi()
         {
-            Dashboard childForm = new Dashboard(FinviewContainer.Instance.Resolve<ITransactionService>() , FinviewContainer.Instance.Resolve<ICategoryService>());
+            //Dashboard childForm = new Dashboard(FinviewContainer.Instance.Resolve<ITransactionService>() , FinviewContainer.Instance.Resolve<ICategoryService>());
+            //childForm.MdiParent = this;
+            //childForm.WindowState = FormWindowState.Maximized;
+            //childForm.Show();
+
+            Reports childForm = new Reports(FinviewContainer.Instance.Resolve<IReportService>());
             childForm.MdiParent = this;
             childForm.WindowState = FormWindowState.Maximized;
             childForm.Show();

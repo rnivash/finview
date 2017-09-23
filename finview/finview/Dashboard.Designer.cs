@@ -30,6 +30,7 @@
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dgTransaction = new System.Windows.Forms.DataGridView();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.ChkColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.TransactionDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Narration = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -37,7 +38,7 @@
             this.DepositAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClosingBalance = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cbCategory = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnDelete = new System.Windows.Forms.DataGridViewImageColumn();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgTransaction)).BeginInit();
             this.SuspendLayout();
@@ -70,66 +71,14 @@
             this.WithdrawalAmount,
             this.DepositAmount,
             this.ClosingBalance,
-            this.cbCategory});
+            this.cbCategory,
+            this.btnDelete});
             this.dgTransaction.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgTransaction.Location = new System.Drawing.Point(3, 3);
             this.dgTransaction.Name = "dgTransaction";
             this.dgTransaction.RowHeadersVisible = false;
             this.dgTransaction.Size = new System.Drawing.Size(897, 464);
             this.dgTransaction.TabIndex = 0;
-            // 
-            // ChkColumn
-            // 
-            this.ChkColumn.FillWeight = 20F;
-            this.ChkColumn.HeaderText = "";
-            this.ChkColumn.Name = "ChkColumn";
-            // 
-            // TransactionDate
-            // 
-            this.TransactionDate.DataPropertyName = "TransactionDate";
-            this.TransactionDate.FillWeight = 89.26595F;
-            this.TransactionDate.HeaderText = "TransactionDate";
-            this.TransactionDate.Name = "TransactionDate";
-            this.TransactionDate.ReadOnly = true;
-            // 
-            // Narration
-            // 
-            this.Narration.DataPropertyName = "Narration";
-            this.Narration.FillWeight = 357.0638F;
-            this.Narration.HeaderText = "Narration";
-            this.Narration.Name = "Narration";
-            this.Narration.ReadOnly = true;
-            // 
-            // WithdrawalAmount
-            // 
-            this.WithdrawalAmount.DataPropertyName = "WithdrawalAmount";
-            this.WithdrawalAmount.FillWeight = 89.26595F;
-            this.WithdrawalAmount.HeaderText = "WithdrawalAmount";
-            this.WithdrawalAmount.Name = "WithdrawalAmount";
-            this.WithdrawalAmount.ReadOnly = true;
-            // 
-            // DepositAmount
-            // 
-            this.DepositAmount.DataPropertyName = "DepositAmount";
-            this.DepositAmount.FillWeight = 89.26595F;
-            this.DepositAmount.HeaderText = "DepositAmount";
-            this.DepositAmount.Name = "DepositAmount";
-            this.DepositAmount.ReadOnly = true;
-            // 
-            // ClosingBalance
-            // 
-            this.ClosingBalance.DataPropertyName = "ClosingBalance";
-            this.ClosingBalance.FillWeight = 89.26595F;
-            this.ClosingBalance.HeaderText = "ClosingBalance";
-            this.ClosingBalance.Name = "ClosingBalance";
-            this.ClosingBalance.ReadOnly = true;
-            // 
-            // cbCategory
-            // 
-            this.cbCategory.DataPropertyName = "CategoryId";
-            this.cbCategory.FillWeight = 89.26595F;
-            this.cbCategory.HeaderText = "Category";
-            this.cbCategory.Name = "cbCategory";
             // 
             // flowLayoutPanel1
             // 
@@ -138,6 +87,66 @@
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(897, 59);
             this.flowLayoutPanel1.TabIndex = 1;
+            // 
+            // ChkColumn
+            // 
+            this.ChkColumn.FillWeight = 16.23903F;
+            this.ChkColumn.HeaderText = "";
+            this.ChkColumn.Name = "ChkColumn";
+            // 
+            // TransactionDate
+            // 
+            this.TransactionDate.DataPropertyName = "TransactionDate";
+            this.TransactionDate.FillWeight = 72.47962F;
+            this.TransactionDate.HeaderText = "TransactionDate";
+            this.TransactionDate.Name = "TransactionDate";
+            this.TransactionDate.ReadOnly = true;
+            // 
+            // Narration
+            // 
+            this.Narration.DataPropertyName = "Narration";
+            this.Narration.FillWeight = 289.9185F;
+            this.Narration.HeaderText = "Narration";
+            this.Narration.Name = "Narration";
+            this.Narration.ReadOnly = true;
+            // 
+            // WithdrawalAmount
+            // 
+            this.WithdrawalAmount.DataPropertyName = "WithdrawalAmount";
+            this.WithdrawalAmount.FillWeight = 72.47962F;
+            this.WithdrawalAmount.HeaderText = "WithdrawalAmount";
+            this.WithdrawalAmount.Name = "WithdrawalAmount";
+            this.WithdrawalAmount.ReadOnly = true;
+            // 
+            // DepositAmount
+            // 
+            this.DepositAmount.DataPropertyName = "DepositAmount";
+            this.DepositAmount.FillWeight = 72.47962F;
+            this.DepositAmount.HeaderText = "DepositAmount";
+            this.DepositAmount.Name = "DepositAmount";
+            this.DepositAmount.ReadOnly = true;
+            // 
+            // ClosingBalance
+            // 
+            this.ClosingBalance.DataPropertyName = "ClosingBalance";
+            this.ClosingBalance.FillWeight = 72.47962F;
+            this.ClosingBalance.HeaderText = "ClosingBalance";
+            this.ClosingBalance.Name = "ClosingBalance";
+            this.ClosingBalance.ReadOnly = true;
+            // 
+            // cbCategory
+            // 
+            this.cbCategory.DataPropertyName = "CategoryId";
+            this.cbCategory.FillWeight = 72.47962F;
+            this.cbCategory.HeaderText = "Category";
+            this.cbCategory.Name = "cbCategory";
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.FillWeight = 25F;
+            this.btnDelete.HeaderText = "";
+            this.btnDelete.Image = global::finview.Properties.Resources.delete;
+            this.btnDelete.Name = "btnDelete";
             // 
             // Dashboard
             // 
@@ -165,5 +174,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DepositAmount;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClosingBalance;
         private System.Windows.Forms.DataGridViewComboBoxColumn cbCategory;
+        private System.Windows.Forms.DataGridViewImageColumn btnDelete;
     }
 }

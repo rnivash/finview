@@ -26,6 +26,7 @@ namespace finview.Report
             base.OnLoad(e);
 
             MyMdi = this.MdiParent as FinviewMdi;
+            MyMdi.ShowMonthControls(true);
 
             LoadTransactionGrid();
 

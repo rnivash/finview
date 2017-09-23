@@ -36,9 +36,15 @@
             this.lblincome = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pieChart)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // pieChart
@@ -55,25 +61,27 @@
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             this.pieChart.Series.Add(series1);
-            this.pieChart.Size = new System.Drawing.Size(705, 549);
+            this.pieChart.Size = new System.Drawing.Size(706, 549);
             this.pieChart.TabIndex = 0;
             this.pieChart.Text = "chart1";
             // 
             // lblexpense
             // 
             this.lblexpense.AutoSize = true;
-            this.lblexpense.Location = new System.Drawing.Point(3, 0);
+            this.lblexpense.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblexpense.Location = new System.Drawing.Point(19, 36);
             this.lblexpense.Name = "lblexpense";
-            this.lblexpense.Size = new System.Drawing.Size(48, 13);
+            this.lblexpense.Size = new System.Drawing.Size(78, 20);
             this.lblexpense.TabIndex = 1;
             this.lblexpense.Text = "Expense";
             // 
             // lblincome
             // 
             this.lblincome.AutoSize = true;
-            this.lblincome.Location = new System.Drawing.Point(57, 0);
+            this.lblincome.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblincome.Location = new System.Drawing.Point(22, 22);
             this.lblincome.Name = "lblincome";
-            this.lblincome.Size = new System.Drawing.Size(42, 13);
+            this.lblincome.Size = new System.Drawing.Size(68, 20);
             this.lblincome.TabIndex = 2;
             this.lblincome.Text = "Income";
             // 
@@ -94,13 +102,44 @@
             // 
             // flowLayoutPanel1
             // 
-            this.flowLayoutPanel1.Controls.Add(this.lblexpense);
-            this.flowLayoutPanel1.Controls.Add(this.lblincome);
+            this.flowLayoutPanel1.Controls.Add(this.tableLayoutPanel2);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(714, 3);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(715, 3);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(351, 549);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(350, 549);
             this.flowLayoutPanel1.TabIndex = 1;
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 1;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Controls.Add(this.panel2, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.panel1, 0, 1);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 2;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 83F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(338, 172);
+            this.tableLayoutPanel2.TabIndex = 3;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.panel1.Controls.Add(this.lblincome);
+            this.panel1.Location = new System.Drawing.Point(3, 92);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(332, 77);
+            this.panel1.TabIndex = 3;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.panel2.Controls.Add(this.lblexpense);
+            this.panel2.Location = new System.Drawing.Point(3, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(332, 83);
+            this.panel2.TabIndex = 4;
             // 
             // Reports
             // 
@@ -113,7 +152,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.pieChart)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
-            this.flowLayoutPanel1.PerformLayout();
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -125,5 +168,8 @@
         private System.Windows.Forms.Label lblincome;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel1;
     }
 }
