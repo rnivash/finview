@@ -79,7 +79,6 @@ namespace finview
                         _transactionService.UpdateTransactionCategory(dcTransaction);
                     }
                 }
-
             }
         }
 
@@ -91,7 +90,6 @@ namespace finview
                 MyMdi.dpTransGrid.Value = ucMonthNavigationobj.ActiveDate;
                 LoadTransactionGrid();
             }
-
         }
 
         public async void LoadTransactionGrid()

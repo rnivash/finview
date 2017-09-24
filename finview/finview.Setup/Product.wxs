@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-  <Product Id="*" Name="finview" Language="1033" Version="1.0.0.0" Manufacturer="Nivash" UpgradeCode="a639eba9-1c51-4585-bb97-78f81bd6196d">
+  <Product Id="97faf9fd-bdc8-4097-b6b3-c33247bfd4a0" Name="Finview" Language="1033" Version="1.0.0.0" Manufacturer="Nivash Ramachandran" UpgradeCode="a639eba9-1c51-4585-bb97-78f81bd6196d">
     <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
     <Media Id="1" Cabinet="myapplication.cab" EmbedCab="yes" />
     <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
@@ -27,7 +27,7 @@
     <DirectoryRef Id="ApplicationProgramsFolder">
       <Component Id="ApplicationShortcut" Guid="8558ee4c-3f69-4492-81ad-ec396e6a565f">
         <Shortcut Id="ApplicationStartMenuShortcut"
-                  Name="Finview" Description="Finview desc"
+                  Name="Finview" 
                   Target="[#filF96AB9EC354FAB3CAB94CEF2CFFAC674]"
                   WorkingDirectory="INSTALLFOLDER"/>
         <RemoveFolder Id="ApplicationProgramsFolder" On="uninstall"/>
