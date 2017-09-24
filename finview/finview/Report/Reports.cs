@@ -10,7 +10,6 @@ namespace finview.Report
 {
     public partial class Reports : Form
     {
-
         private IReportService _reportService;
 
         private FinviewMdi MyMdi { get; set; }
@@ -19,7 +18,6 @@ namespace finview.Report
         {
             _reportService = reportService;
             InitializeComponent();
-          
         }
 
         protected override void OnLoad(EventArgs e)
@@ -48,8 +46,6 @@ namespace finview.Report
                 lblincome.Text = result.Income.ToString();
 
                 FillChart(result.CategoryTrans);
-                
-                
             }
         }
 

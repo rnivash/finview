@@ -10,7 +10,6 @@ namespace finview
 {
     public partial class FinviewMdi : Form
     {
-
         private readonly ITransactionService _transactionService;
 
         public FinviewMdi()
@@ -25,11 +24,6 @@ namespace finview
 
         private void LoadMdi()
         {
-            //Dashboard childForm = new Dashboard(FinviewContainer.Instance.Resolve<ITransactionService>() , FinviewContainer.Instance.Resolve<ICategoryService>());
-            //childForm.MdiParent = this;
-            //childForm.WindowState = FormWindowState.Maximized;
-            //childForm.Show();
-
             Reports childForm = new Reports(FinviewContainer.Instance.Resolve<IReportService>());
             childForm.MdiParent = this;
             childForm.WindowState = FormWindowState.Maximized;
@@ -101,7 +95,7 @@ namespace finview
 
         private void optionsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            System.Windows.Forms.OpenFileDialog openFileDialog = new System.Windows.Forms.OpenFileDialog
+            OpenFileDialog openFileDialog = new OpenFileDialog
             {
                 Multiselect = false,
                 Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*",

@@ -1,9 +1,8 @@
-﻿using finview;
-using finview.Business.Boot;
+﻿using finview.Business.Boot;
 using System;
 using System.Windows.Forms;
 
-namespace WindowsFormsApp1
+namespace finview
 {
     static class Program
     {

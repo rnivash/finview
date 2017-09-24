@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Product Id="*" Name="finview" Language="1033" Version="1.0.0.0" Manufacturer="Nivash" UpgradeCode="a639eba9-1c51-4585-bb97-78f81bd6196d">
+		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+    <Media Id="1" Cabinet="myapplication.cab" EmbedCab="yes" />
+
+    <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />		
+
+		<Feature Id="ProductFeature" Title="Finview" Level="1">
+			<ComponentGroupRef Id="ProductComponents" />
+      <ComponentRef Id="ApplicationShortcut" />
+		</Feature>
+
+    <Property Id="WIXUI_INSTALLDIR" Value="INSTALLFOLDER" />
+
+    <UIRef Id="WixUI_InstallDir" />
+
+  </Product>
+
+	<Fragment>
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="ProgramFilesFolder">
+				<Directory Id="INSTALLFOLDER" Name="Finview" />
+			</Directory>
+      <Directory Id="ProgramMenuFolder">
+        <Directory Id="ApplicationProgramsFolder" Name="Finview"/>
+      </Directory>
+    </Directory>
+	</Fragment>
+
+  <Fragment>
+    <DirectoryRef Id="ApplicationProgramsFolder">
+      <Component Id="ApplicationShortcut" Guid="8558ee4c-3f69-4492-81ad-ec396e6a565f">
+        <Shortcut Id="ApplicationStartMenuShortcut" 
+                  Name="Finview" Description="Finview desc" 
+                  Target="[#filF96AB9EC354FAB3CAB94CEF2CFFAC674]"
+                  WorkingDirectory="INSTALLFOLDER"/>
+        <RemoveFolder Id="ApplicationProgramsFolder" On="uninstall"/>
+        <RegistryValue Root="HKCU" Key="Software\Microsoft\Finview" Name="installed" Type="integer" Value="1" KeyPath="yes"/>
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+
+	<Fragment>
+		<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
+			<Component Id="ProductComponent" Guid="{E0CC3563-446A-4F95-8E75-9558101CDE64}">
+        <File Id="fil146B6298C244E9B645415DE8D69F3220"  Source="$(var.finview.TargetDir)\EntityFramework.dll" />      
+        <File Id="fil5C343C556F151C5941807AC852DCCC74"  Source="$(var.finview.TargetDir)\EntityFramework.SqlServer.dll" />      
+        <File Id="fil71F1C6F0F2BD091C35918943DE25EF18"  Source="$(var.finview.TargetDir)\finview.Business.Contracts.dll" />
+        <File Id="filE35EDE4CA7BCAFB671D4762986755557"  Source="$(var.finview.TargetDir)\finview.Business.dll" />      
+        <File Id="fil3AD3804B0E953692BA10DDFAC42D9201"  Source="$(var.finview.TargetDir)\finview.DataAccess.Contracts.dll" />      
+        <File Id="fil3DEF3ADD2DCE8AE147EB2CE10374200E"  Source="$(var.finview.TargetDir)\finview.DataAccess.dll" />      
+        <File Id="fil314D12B85959203B324FFE7136AA1773"  Source="$(var.finview.TargetDir)\finview.DataAccess.dll.config" />      
+        <File Id="fil7F3A18FD56F3AA4B89D147549B70EE4C"  Source="$(var.finview.TargetDir)\finview.Entities.dll" />      
+        <File Id="filF96AB9EC354FAB3CAB94CEF2CFFAC674"  Source="$(var.finview.TargetDir)\finview.exe" />
+        <File Id="fil96CE08902E787ED6281B124F41151B59"  Source="$(var.finview.TargetDir)\finview.exe.config" />
+        <File Id="fil0DA30B59F9278FFD2D89DD6D9DC8BDA6"  Source="$(var.finview.TargetDir)\Microsoft.Practices.ServiceLocation.dll" />
+        <File Id="fil1B061B8A9369A4921CA6787670911775"  Source="$(var.finview.TargetDir)\Microsoft.Practices.Unity.Configuration.dll" />      
+        <File Id="filD11696C103199738DCFBCE9F55A9AE5A"  Source="$(var.finview.TargetDir)\Microsoft.Practices.Unity.dll" />      
+        <File Id="fil6A9623D15A469CE0C0D647BFD09EBF49"  Source="$(var.finview.TargetDir)\Microsoft.Practices.Unity.RegistrationByConvention.dll" />
+      </Component>
+		</ComponentGroup>
+	</Fragment>
+</Wix>

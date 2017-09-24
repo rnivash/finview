@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+    <Fragment>
+        <DirectoryRef Id="finview.Binaries">
+            <Component Id="cmpE11AB2892924A1F4F27AAF06C6983FBB" Guid="*">
+                <File Id="fil787AC1EEBAEEE14ACA6F086886917B32" Source="$(var.finview.TargetDir)\finview.exe" />
+            </Component>
+            <Component Id="cmp6951E30288F4019183A4EE2CE68C6D87" Guid="*">
+                <File Id="fil97731CBBBC1B6ED94172180B61CC612F" Source="$(var.finview.TargetDir)\finview.exe.config" />
+            </Component>
+        </DirectoryRef>
+    </Fragment>
+    <Fragment>
+        <ComponentGroup Id="finview.Binaries">
+            <ComponentRef Id="cmpE11AB2892924A1F4F27AAF06C6983FBB" />
+            <ComponentRef Id="cmp6951E30288F4019183A4EE2CE68C6D87" />
+        </ComponentGroup>
+    </Fragment>
+</Wix>

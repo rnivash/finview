@@ -1,9 +1,6 @@
 ﻿using finview.Business.Contracts;
 using finview.Controls;
 using finview.Entities.Model;
-using finview.Entities.Unity;
-using finview.Settings;
-using Microsoft.Practices.Unity;
 using System;
 using System.ComponentModel;
 using System.Threading.Tasks;
@@ -14,7 +11,6 @@ namespace finview
 {
     public partial class Dashboard : Form
     {
-
         private readonly ITransactionService _transactionService;
 
         private readonly ICategoryService _categoryService;
@@ -121,8 +117,6 @@ namespace finview
         {
             LoadTransactionGrid();
         }    
-
-       
        
     }
 }
